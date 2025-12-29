@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+}
+
+body {
+  background: black;
+  color: #e0e0e0;
+  overflow: hidden;
+}
+
+/* Matrix Canvas */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Content Layer */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 80px 10%;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #00ff9c;
+  text-shadow: 0 0 12px rgba(0, 255, 156, 0.6);
+}
+
+.subtitle {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+section {
+  margin-top: 60px;
+}
+
+h2 {
+  color: #00ff9c;
+  margin-bottom: 10px;
+}
+
+ul li {
+  list-style: none;
+  margin-bottom: 6px;
+}
+
+.links a {
+  margin-right: 20px;
+  color: #00ff9c;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.links a:hover {
+  opacity: 0.6;
+}
