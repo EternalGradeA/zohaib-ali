@@ -1,19 +1,24 @@
+// Matrix background
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function sizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+sizeCanvas();
 
 const letters = "01";
 const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array(Math.floor(columns)).fill(1);
+
+let columns = canvas.width / fontSize;
+let drops = Array(Math.floor(columns)).fill(1);
 
 function draw() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#00ff9c"; // ❌ NO emoji here
+  ctx.fillStyle = "#00ff9c";
   ctx.font = fontSize + "px monospace";
 
   for (let i = 0; i < drops.length; i++) {
@@ -30,15 +35,16 @@ function draw() {
 setInterval(draw, 33);
 
 window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  sizeCanvas();
+  columns = canvas.width / fontSize;
+  drops = Array(Math.floor(columns)).fill(1);
 });
 
 // ---------------------------
 // Mini Games
 // ---------------------------
 
-// 1) Reaction Test
+// Reaction Test
 const reactionPanel = document.getElementById("reactionPanel");
 const reactionStartBtn = document.getElementById("reactionStart");
 const reactionResetBtn = document.getElementById("reactionReset");
@@ -46,7 +52,7 @@ const reactionResult = document.getElementById("reactionResult");
 
 let reactionTimeout = null;
 let reactionStartTime = null;
-let reactionState = "idle"; // idle | waiting | go
+let reactionState = "idle";
 
 function reactionSet(text, cls) {
   reactionPanel.textContent = text;
@@ -54,16 +60,14 @@ function reactionSet(text, cls) {
   if (cls) reactionPanel.classList.add(cls);
 }
 
-reactionSet("READY", "waiting");
-
 reactionStartBtn.addEventListener("click", () => {
-  if (reactionState === "waiting" || reactionState === "go") return;
+  if (reactionState !== "idle") return;
 
   reactionState = "waiting";
   reactionResult.textContent = "Wait for green...";
   reactionSet("WAIT...", "waiting");
 
-  const delay = 900 + Math.random() * 2400; // 0.9s - 3.3s
+  const delay = 900 + Math.random() * 2400;
   reactionTimeout = setTimeout(() => {
     reactionState = "go";
     reactionStartTime = performance.now();
@@ -73,7 +77,6 @@ reactionStartBtn.addEventListener("click", () => {
 
 reactionPanel.addEventListener("click", () => {
   if (reactionState === "waiting") {
-    // clicked too early
     clearTimeout(reactionTimeout);
     reactionTimeout = null;
     reactionState = "idle";
@@ -99,7 +102,7 @@ reactionResetBtn.addEventListener("click", () => {
   reactionResult.textContent = "—";
 });
 
-// 2) Typing Challenge
+// Typing Challenge
 const typingTarget = document.getElementById("typingTarget");
 const typingInput = document.getElementById("typingInput");
 const typingStartBtn = document.getElementById("typingStart");
@@ -111,7 +114,6 @@ let typingBest = 0;
 let currentString = "";
 
 function genString() {
-  // “encrypted” vibe: binary + hex-ish
   const chars = "01ABCDEF";
   let s = "";
   for (let i = 0; i < 10; i++) s += chars[Math.floor(Math.random() * chars.length)];
@@ -119,7 +121,8 @@ function genString() {
 }
 
 function typingUpdateUI(msg = "") {
-  typingResult.textContent = `Score: ${typingScore} • Best: ${typingBest}${msg ? " • " + msg : ""}`;
+  typingResult.textContent =
+    `Score: ${typingScore} • Best: ${typingBest}` + (msg ? ` • ${msg}` : "");
 }
 
 function typingNewRound() {
@@ -139,21 +142,20 @@ typingStartBtn.addEventListener("click", () => {
 
 typingInput.addEventListener("keydown", (e) => {
   if (e.key !== "Enter") return;
+  if (!currentString) return;
 
   const typed = typingInput.value.trim().toUpperCase();
-  if (!currentString) return;
 
   if (typed === currentString) {
     typingScore++;
-    if (typingScore > typingBest) typingBest = typingScore;
+    typingBest = Math.max(typingBest, typingScore);
     typingUpdateUI("Clean.");
-    typingNewRound();
   } else {
     typingBest = Math.max(typingBest, typingScore);
     typingScore = 0;
     typingUpdateUI("Miss.");
-    typingNewRound();
   }
+  typingNewRound();
 });
 
 typingResetBtn.addEventListener("click", () => {

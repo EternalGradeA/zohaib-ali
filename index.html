@@ -8,10 +8,8 @@
 </head>
 <body>
 
-  <!-- Matrix Background -->
   <canvas id="matrix"></canvas>
 
-  <!-- Main Content -->
   <main class="content">
     <section class="hero">
       <h1>Zohaib Ali</h1>
@@ -20,8 +18,8 @@
 
     <section class="about">
       <p>
-        I build things quietly.  
-        I learn fast.  
+        I build things quietly.<br />
+        I learn fast.<br />
         I care about systems that actually work.
       </p>
     </section>
@@ -41,51 +39,48 @@
     </section>
 
     <section class="links">
-  <a href="https://www.linkedin.com/in/zohaib-ali-90b773281/" target="_blank">LinkedIn</a>
-  <a href="https://github.com/EternalGradeA" target="_blank">GitHub</a>
-  <a href="https://instagram.com/z_.51a" target="_blank">Instagram</a>
-</section>
+      <a href="https://www.linkedin.com/in/zohaib-ali-90b773281/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/EternalGradeA" target="_blank">GitHub</a>
+      <a href="https://instagram.com/z_.51a" target="_blank">Instagram</a>
+    </section>
 
-<section class="minigames">
-  <h2>Mini Games</h2>
-  <p class="mini-sub">Small tests. No noise.</p>
+    <section class="minigames">
+      <h2>Mini Games</h2>
+      <p class="mini-sub">Small tests. No noise.</p>
 
-  <div class="games-grid">
-    <!-- Reaction Test -->
-    <div class="game-card" id="reactionCard">
-      <h3>Reaction Test</h3>
-      <p class="muted">Click when the panel turns green.</p>
+      <div class="games-grid">
+        <div class="game-card" id="reactionCard">
+          <h3>Reaction Test</h3>
+          <p class="muted">Click when the panel turns green.</p>
 
-      <div class="reaction-panel" id="reactionPanel">READY</div>
+          <div class="reaction-panel waiting" id="reactionPanel">READY</div>
 
-      <div class="game-actions">
-        <button class="btn" id="reactionStart">Start</button>
-        <button class="btn ghost" id="reactionReset">Reset</button>
+          <div class="game-actions">
+            <button class="btn" id="reactionStart">Start</button>
+            <button class="btn ghost" id="reactionReset">Reset</button>
+          </div>
+
+          <p class="result" id="reactionResult">—</p>
+        </div>
+
+        <div class="game-card">
+          <h3>Typing Challenge</h3>
+          <p class="muted">Type the string. Hit Enter. Build streak.</p>
+
+          <div class="code-box" id="typingTarget">press start</div>
+
+          <input class="code-input" id="typingInput" placeholder="type here..." />
+          <div class="game-actions">
+            <button class="btn" id="typingStart">Start</button>
+            <button class="btn ghost" id="typingReset">Reset</button>
+          </div>
+
+          <p class="result" id="typingResult">Score: 0 • Best: 0</p>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <p class="result" id="reactionResult">—</p>
-    </div>
-
-    <!-- Typing Challenge -->
-    <div class="game-card">
-      <h3>Typing Challenge</h3>
-      <p class="muted">Type the string. Hit Enter. Build streak.</p>
-
-      <div class="code-box" id="typingTarget">press start</div>
-
-      <input class="code-input" id="typingInput" placeholder="type here..." />
-      <div class="game-actions">
-        <button class="btn" id="typingStart">Start</button>
-        <button class="btn ghost" id="typingReset">Reset</button>
-      </div>
-
-      <p class="result" id="typingResult">Score: 0 • Best: 0</p>
-    </div>
-  </div>
-</section>
-
-
-  <!-- JS MUST be last -->
   <script src="./script.js"></script>
 </body>
 </html>
