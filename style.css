@@ -54,11 +54,13 @@ ul li {
 }
 
 .links a {
-  margin-right: 20px;
+  margin-right: 24px;
   color: #00ff9c;
   text-decoration: none;
+  letter-spacing: 0.5px;
   transition: opacity 0.3s;
 }
+
 
 .links a:hover {
   opacity: 0.6;
