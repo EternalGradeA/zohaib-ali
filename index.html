@@ -46,6 +46,44 @@
   <a href="https://instagram.com/z_.51a" target="_blank">Instagram</a>
 </section>
 
+<section class="minigames">
+  <h2>Mini Games</h2>
+  <p class="mini-sub">Small tests. No noise.</p>
+
+  <div class="games-grid">
+    <!-- Reaction Test -->
+    <div class="game-card" id="reactionCard">
+      <h3>Reaction Test</h3>
+      <p class="muted">Click when the panel turns green.</p>
+
+      <div class="reaction-panel" id="reactionPanel">READY</div>
+
+      <div class="game-actions">
+        <button class="btn" id="reactionStart">Start</button>
+        <button class="btn ghost" id="reactionReset">Reset</button>
+      </div>
+
+      <p class="result" id="reactionResult">—</p>
+    </div>
+
+    <!-- Typing Challenge -->
+    <div class="game-card">
+      <h3>Typing Challenge</h3>
+      <p class="muted">Type the string. Hit Enter. Build streak.</p>
+
+      <div class="code-box" id="typingTarget">press start</div>
+
+      <input class="code-input" id="typingInput" placeholder="type here..." />
+      <div class="game-actions">
+        <button class="btn" id="typingStart">Start</button>
+        <button class="btn ghost" id="typingReset">Reset</button>
+      </div>
+
+      <p class="result" id="typingResult">Score: 0 • Best: 0</p>
+    </div>
+  </div>
+</section>
+
 
   <!-- JS MUST be last -->
   <script src="./script.js"></script>

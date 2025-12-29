@@ -65,3 +65,123 @@ ul li {
 .links a:hover {
   opacity: 0.6;
 }
+
+.minigames {
+  margin-top: 80px;
+}
+
+.mini-sub {
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+.games-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.game-card {
+  border: 1px solid rgba(0, 255, 156, 0.18);
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 18px rgba(0, 255, 156, 0.06);
+  border-radius: 14px;
+  padding: 18px;
+  backdrop-filter: blur(6px);
+}
+
+.game-card h3 {
+  color: #00ff9c;
+  margin-bottom: 6px;
+}
+
+.muted {
+  opacity: 0.75;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.game-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  background: rgba(0, 255, 156, 0.12);
+  border: 1px solid rgba(0, 255, 156, 0.25);
+  color: #00ff9c;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.05s;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn.ghost {
+  background: transparent;
+}
+
+.reaction-panel {
+  height: 120px;
+  border-radius: 12px;
+  border: 1px solid rgba(224, 224, 224, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+.reaction-panel.waiting {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.reaction-panel.go {
+  background: rgba(0, 255, 156, 0.18);
+  border-color: rgba(0, 255, 156, 0.35);
+}
+
+.code-box {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 156, 0.18);
+  background: rgba(0, 0, 0, 0.35);
+  color: #00ff9c;
+  letter-spacing: 2px;
+  font-size: 1.05rem;
+}
+
+.code-input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 156, 0.18);
+  background: rgba(0, 0, 0, 0.35);
+  color: #e0e0e0;
+  outline: none;
+}
+
+.code-input:focus {
+  border-color: rgba(0, 255, 156, 0.4);
+}
+
+.result {
+  margin-top: 12px;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+}
